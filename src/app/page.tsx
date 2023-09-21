@@ -51,7 +51,9 @@ export default function Home() {
       <div className="flex justify-center w-full">
         <div className="grid grid-cols-2 gap-4">
           {!!response.length &&
-            response.map((v) => <Card hat={v.hat} message={v.result} />)}
+            response.map((v) => (
+              <Card hat={v.hat} key={v.hat} message={v.result} />
+            ))}
         </div>
       </div>
     </main>
