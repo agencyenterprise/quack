@@ -30,7 +30,7 @@ export default function Home() {
           <p>{message.introduction}</p>
           <ul>
             {message.bulletPoints.map((v: string) => (
-              <li>* {v}</li>
+              <li key={v}>* {v}</li>
             ))}
           </ul>
         </div>
