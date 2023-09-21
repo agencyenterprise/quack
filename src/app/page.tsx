@@ -27,7 +27,12 @@ export default function Home() {
       <div className="flex justify-center items-start max-w-[600px] max-h-[400px] overflow-y-auto bg-white text-black pl-3">
         <div>
           <span>{hat}</span>
-          <p>{message.text}</p>
+          <p>{message.introduction}</p>
+          <ul>
+            {message.bulletPoints.map((v: string) => (
+              <li>* {v}</li>
+            ))}
+          </ul>
         </div>
       </div>
     );

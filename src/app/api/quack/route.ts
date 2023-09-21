@@ -7,6 +7,8 @@ import {
   red_hat,
   yellow_hat,
   blue_hat,
+  summary,
+  plain_summary,
 } from "@/quack/prompts";
 import { NextResponse } from "next/server";
 
@@ -115,9 +117,10 @@ export async function POST(req: Request) {
   const { message, hat } = await req.json();
   let chain;
   let data;
+  const summary_chain = await get_chain(summary);
+  const plain_summary_chain = await get_chain(plain_summary);
   switch (hat) {
     case "blue":
-      console.log("blue hat");
       data = {
         context: await getContextSearch(hat),
         quotes: await getQuoteSearch(hat),
@@ -126,7 +129,6 @@ export async function POST(req: Request) {
       chain = await get_chain(blue_hat);
       break;
     case "yellow":
-      console.log("yellow hat");
       data = {
         context: await getContextSearch(hat),
         quotes: await getQuoteSearch(hat),
@@ -135,7 +137,6 @@ export async function POST(req: Request) {
       chain = await get_chain(yellow_hat);
       break;
     case "black":
-      console.log("black hat");
       data = {
         context: await getContextSearch(hat),
         quotes: await getQuoteSearch(hat),
@@ -144,7 +145,6 @@ export async function POST(req: Request) {
       chain = await get_chain(black_hat);
       break;
     case "white":
-      console.log("white hat");
       data = {
         context: await getContextSearch(hat),
         quotes: await getQuoteSearch(hat),
@@ -153,7 +153,6 @@ export async function POST(req: Request) {
       chain = await get_chain(white_hat);
       break;
     case "red":
-      console.log("red hat");
       data = {
         context: await getContextSearch(hat),
         quotes: await getQuoteSearch(hat),
@@ -162,7 +161,6 @@ export async function POST(req: Request) {
       chain = await get_chain(red_hat);
       break;
     case "green":
-      console.log("green hat");
       data = {
         context: await getContextSearch(hat),
         quotes: await getQuoteSearch(hat),
@@ -171,13 +169,20 @@ export async function POST(req: Request) {
       chain = await get_chain(green_hat);
       break;
     default:
-      console.log("default");
       throw new Error("Invalid hat");
   }
-  const result = await chain.call({
+  const hat_result = await chain.call({
     context: data.context,
     quotes: data.quotes,
     user_input: data.user_input,
   });
+  let result;
+  try {
+    result = await summary_chain.call({ input: hat_result.text });
+    result = JSON.parse(result.text);
+  } catch (e) {
+    result = await plain_summary_chain.call({ input: hat_result.text });
+    result = { introduction: result.text, bulletPoints: [] };
+  }
   return NextResponse.json({ result, hat });
 }
