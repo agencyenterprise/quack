@@ -192,7 +192,7 @@ The personas are representations of the 6 thinking hats.
 5. DO NOT ADD auxiliar text, like mentioning the personas, and do not start your sentence with "The persona..." or "INTRODUCTION: ..."
 6. When talking about the persona use the first person language, so instead of "The persona expresses a sense of wonder and imagination when thinking about a lightbulb made of fireflies", you should say "I express a sense of wonder and imagination when thinking about a lightbulb made of fireflies"
 7. When writing the introduction and bullet points you should try your best to sumarize the persona's writing style as well as keeping short a simple. 
-8. You can use different humor styles to write the introduction and bullet points, but you should try to keep the same humor style for each persona.
+{quack_mode}
 ----END TASKS----
 You should add your message in the following JSON format:
 ---FORMAT---
@@ -214,7 +214,7 @@ The personas are representations of the 6 thinking hats.
 5. DO NOT ADD auxiliar text, like mentioning the personas, and do not start your sentence with "The persona..." or "INTRODUCTION: ..."
 6. When talking about the persona use the first person language, so instead of "The persona expresses a sense of wonder and imagination when thinking about a lightbulb made of fireflies", you should say "I express a sense of wonder and imagination when thinking about a lightbulb made of fireflies"
 7. When writing the introduction and bullet points you should try your best to sumarize the persona's writing style as well as keeping short a simple. 
-8. You can use different humor styles to write the introduction and bullet points, but you should try to keep the same humor style for each persona.
+{quack_mode}
 ----END TASKS----
 You should add your message in the following format:
 ---FORMAT---

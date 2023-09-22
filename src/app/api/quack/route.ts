@@ -114,7 +114,7 @@ const getQuoteSearch = async (hat: string) => {
 };
 
 export async function POST(req: Request) {
-  const { message, hat } = await req.json();
+  const { message, hat, quackMode } = await req.json();
   let chain;
   let data;
   const summary_chain = await get_chain(summary);
@@ -177,11 +177,20 @@ export async function POST(req: Request) {
     user_input: data.user_input,
   });
   let result;
+  const quack = quackMode
+    ? "8. You can use different humor styles to write the introduction and bullet points, but you should try to keep the same humor style for each persona.\n9. You should add quack to your message at random times. Add 'quack' between workds, because beside from being a thinking you are also a cool duck"
+    : "8. You can use different humor styles to write the introduction and bullet points, but you should try to keep the same humor style for each persona.";
   try {
-    result = await summary_chain.call({ input: hat_result.text });
+    result = await summary_chain.call({
+      input: hat_result.text,
+      quack_mode: quack,
+    });
     result = JSON.parse(result.text);
   } catch (e) {
-    result = await plain_summary_chain.call({ input: hat_result.text });
+    result = await plain_summary_chain.call({
+      input: hat_result.text,
+      quack_mode: quack,
+    });
     result = { introduction: result.text, bulletPoints: [] };
   }
   return NextResponse.json({ result, hat });
