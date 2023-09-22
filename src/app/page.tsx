@@ -1,13 +1,15 @@
 "use client";
 import { useState } from "react";
 export default function Home() {
+  const [quackSound] = useState(
+    typeof Audio !== "undefined" && new Audio("/quack.mp3")
+  );
   const [message, setMessage] = useState("");
   const [quackMode, setQuackMode] = useState(false);
   const [response, setResponse] = useState<any[]>([]);
   const handleChange = (e: any) => {
     setMessage(e.target.value);
   };
-  const quackSound = new Audio("/quack.mp3");
   const getMessage = async (hat: string) => {
     const response = await fetch("/api/quack", {
       method: "POST",
@@ -42,7 +44,7 @@ export default function Home() {
   const handleQuackMode = (e: any) => {
     console.log(e.target.checked);
     setQuackMode(e.target.checked);
-    quackSound.play();
+    (quackSound as HTMLAudioElement).play();
   };
   return (
     <main className="flex flex-col justify-center items-start pt-12">
