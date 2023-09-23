@@ -21,7 +21,7 @@ export default function Home() {
   };
   const handleClick = async () => {
     const response = await Promise.all(
-      ["Blue Duck", "red", "green", "yellow", "black", "white"].map(async (v) =>
+      ["blue", "red", "green", "yellow", "black", "white"].map(async (v) =>
         getMessage(v)
       )
     );
@@ -53,15 +53,18 @@ export default function Home() {
         <div className="w-full md:w-1/2">
           <div className="flex w-full justify-center text-indigo-200">
             <span className="pb-6">
-            Super-charge ideas by critically thinking about them in 6 different ways.
+              Super-charge ideas by critically thinking about them in 6
+              different ways.
             </span>
-            </div>
-            <input
-              className="w-full py-4 rounded-md border-2 border-indigo-500 text-black px-3 text-left"
-              onChange={handleChange}
-            ></input>
-            <div className="flex justify-center space-x-2 py-4">
-            <label htmlFor="quack" className="text-white">Enable quack mode</label>
+          </div>
+          <input
+            className="w-full py-4 rounded-md border-2 border-indigo-500 text-black px-3 text-left"
+            onChange={handleChange}
+          ></input>
+          <div className="flex justify-center space-x-2 py-4">
+            <label htmlFor="quack" className="text-white">
+              Enable quack mode
+            </label>
             <Switch onClick={handleQuackMode} />
           </div>
           <div className="flex justify-end">
@@ -74,13 +77,13 @@ export default function Home() {
           </div>
         </div>
         <div className="flex justify-center w-full">
-        <div className="grid grid-cols-2 gap-4 pt-8">
-          {!!response.length &&
-            response.map((v) => (
-              <Card hat={v.hat} key={v.hat} message={v.result} />
-            ))}
+          <div className="grid grid-cols-2 gap-4 pt-8">
+            {!!response.length &&
+              response.map((v) => (
+                <Card hat={v.hat} key={v.hat} message={v.result} />
+              ))}
+          </div>
         </div>
-      </div>
       </div>
     </main>
   );
