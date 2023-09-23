@@ -126,23 +126,27 @@ export default function Home() {
               different ways.
             </span>
           </div>
-          <input
-            className="w-full py-4 rounded-md border-2 border-indigo-500 text-black px-3 text-left"
+          <textarea
+            className="w-full py-4 h-48 rounded-md border-2 border-indigo-500 text-black px-3 text-left"
             onChange={handleChange}
-          ></input>
+            placeholder="Enter your idea. Any details you can add around the problem being solved will make the outcome even better."
+          ></textarea>
           <div className="flex justify-center space-x-2 py-4">
             <label htmlFor="quack" className="text-white">
               Enable quack mode
             </label>
             <Switch onClick={handleQuackMode} />
           </div>
-          <div className="flex justify-end">
+          <div className="flex flex-col justify-end">
             <button
               className="w-full py-4 rounded-md text-white bg-indigo-500"
               onClick={handleClick}
             >
               Let’s break it down!
             </button>
+            <div className="pt-4 text-indigo-200 text-sm">
+              <span>GPT can take quacking forever to load sometimes. Blame them, not us. QUACK!</span>
+            </div>
           </div>
           {loading && (
             <div className="flex justify-end">
