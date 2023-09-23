@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Switch from "./components/Switch";
+import Loader from "./components/loading";
 
 export default function Home() {
   const [quackSound] = useState(
@@ -9,6 +10,7 @@ export default function Home() {
   const [message, setMessage] = useState("");
   const [quackMode, setQuackMode] = useState(false);
   const [response, setResponse] = useState<any[]>([]);
+  const [loading, setLoading] = useState(false);
   const handleChange = (e: any) => {
     setMessage(e.target.value);
   };
@@ -20,6 +22,7 @@ export default function Home() {
     return await response.json();
   };
   const handleClick = async () => {
+    setLoading(true);
     const response = await Promise.all(
       ["blue", "red", "green", "yellow", "black", "white"].map(async (v) =>
         getMessage(v)
@@ -27,6 +30,7 @@ export default function Home() {
     );
     setResponse(response);
     console.log(response);
+    setLoading(false);
   };
   const Card = ({ message, hat }: any) => {
     return (
@@ -75,6 +79,11 @@ export default function Home() {
               Let’s break it down!
             </button>
           </div>
+          {!loading && (
+            <div className="flex justify-end">
+              <Loader />
+            </div>
+          )}
         </div>
         <div className="flex justify-center w-full">
           <div className="grid grid-cols-2 gap-4 pt-8">
