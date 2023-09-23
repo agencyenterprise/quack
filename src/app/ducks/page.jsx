@@ -53,7 +53,7 @@ export default function Ducks() {
                 </span>
               </div>
               <div className="flex relative w-full flex-row items-end bg-indigo-600 rounded-b-md px-4 py-4">
-                <img src="/black-duck.png" className="w-12 md:w-16 absolute" />
+                <img src="/blue-duck.png" className="w-12 md:w-16 absolute" />
                 <div className="flex flex-col md:flex-row w-full items-left md:items-center pl-4 md:pl-20">
                   <span className="text-white text-sm md:text-center pl-10 md:pl-0">
                     Blue Duck
@@ -77,7 +77,7 @@ export default function Ducks() {
                 </span>
               </div>
               <div className="flex relative w-full flex-row items-end bg-indigo-600 rounded-b-md px-4 py-4">
-                <img src="/black-duck.png" className="w-12 md:w-16 absolute" />
+                <img src="/green-duck.png" className="w-12 md:w-16 absolute" />
                 <div className="flex flex-col md:flex-row w-full items-left md:items-center pl-4 md:pl-20">
                   <span className="text-white text-sm md:text-center pl-10 md:pl-0">
                     Green Duck
@@ -98,7 +98,7 @@ export default function Ducks() {
                 </span>
               </div>
               <div className="flex relative w-full flex-row items-end bg-indigo-600 rounded-b-md px-4 py-4">
-                <img src="/black-duck.png" className="w-12 md:w-16 absolute" />
+                <img src="/yellow-duck.png" className="w-12 md:w-16 absolute" />
                 <div className="flex flex-col md:flex-row w-full items-left md:items-center pl-4 md:pl-20">
                   <span className="text-white text-sm md:text-center pl-10 md:pl-0">
                     Yellow Duck
@@ -123,7 +123,7 @@ export default function Ducks() {
                 </span>
               </div>
               <div className="flex relative w-full flex-row items-end bg-indigo-600 rounded-b-md px-4 py-4">
-                <img src="/black-duck.png" className="w-12 md:w-16 absolute" />
+                <img src="/white-duck.png" className="w-12 md:w-16 absolute" />
                 <div className="flex flex-col md:flex-row w-full items-left md:items-center pl-4 md:pl-20">
                   <span className="text-white text-sm md:text-center pl-10 md:pl-0">
                     White Duck
@@ -145,7 +145,7 @@ export default function Ducks() {
                 </span>
               </div>
               <div className="flex relative w-full flex-row items-end bg-indigo-600 rounded-b-md px-4 py-4">
-                <img src="/black-duck.png" className="w-12 md:w-16 absolute" />
+                <img src="/red-duck.png" className="w-12 md:w-16 absolute" />
                 <div className="flex flex-col md:flex-row w-full items-left md:items-center pl-4 md:pl-20">
                   <span className="text-white text-sm md:text-center pl-10 md:pl-0">
                     Red Duck
