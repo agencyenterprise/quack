@@ -21,6 +21,42 @@ export default function Home() {
     });
     return await response.json();
   };
+  const getImage = (hat: string) => {
+    switch (hat) {
+      case "blue":
+        return "/blue-duck.png";
+      case "red":
+        return "/red-duck.png";
+      case "green":
+        return "/green-duck.png";
+      case "yellow":
+        return "/yellow-duck.png";
+      case "black":
+        return "/black-duck.png";
+      case "white":
+        return "/white-duck.png";
+      default:
+        return "/blue-duck.png";
+    }
+  };
+  const getHatDescription = (hat: string) => {
+    switch (hat) {
+      case "blue":
+        return "Blue Duck Process, Structure, Next Steps";
+      case "red":
+        return "Red Duck Emotional, Intuitive, Empathetic";
+      case "green":
+        return "Green Duck Creative, Similar Ideas, Alternatives";
+      case "yellow":
+        return "Yellow Duck Benefits, Positivity, Useful outcomes";
+      case "black":
+        return "Black Duck Steel-Man, Cautious, Negatives";
+      case "white":
+        return "White Duck Neutral, Fact-based, Objective";
+      default:
+        return "Red Duck Emotional, Intuitive, Empathetic";
+    }
+  };
   const handleClick = async () => {
     setLoading(true);
     const response = await Promise.all(
@@ -34,15 +70,39 @@ export default function Home() {
   };
   const Card = ({ message, hat }: any) => {
     return (
-      <div className="flex justify-center items-start max-w-[600px] max-h-[400px] overflow-y-auto rounded-lg bg-white text-black px-6 py-6">
-        <div>
-          <span>{hat}</span>
-          <p>{message.introduction}</p>
-          <ul>
+      <div className="flex w-full flex-col items-center">
+        <div className="flex w-full h-full bg-white px-6 py-6 md:px-8  md:py-8 rounded-t-md flex-col md:space-y-2 sm:space-y-2 sm:px-8  sm:py-8">
+          <span className="text-slate-700 text-base">
+            {message.introduction}
+          </span>
+          <ul style={{ listStyleType: "disc" }}>
             {message.bulletPoints.map((v: string) => (
-              <li key={v}>* {v}</li>
+              <li className="text-slate-700" key={v}>
+                {v}
+              </li>
             ))}
           </ul>
+        </div>
+        <div className="flex relative w-full flex-row items-end bg-indigo-600 rounded-b-md px-4 py-4">
+          <img src={getImage(hat)} className="w-12 md:w-16 absolute" />
+          <div className="flex flex-col md:flex-row w-full items-left md:items-center pl-4 md:pl-20">
+            <span className="text-white text-sm md:text-center pl-10 md:pl-0">
+              {getHatDescription(hat).split(" ").slice(0, 2).join(" ")}
+            </span>
+            <span className="text-indigo-300 text-xs text-center pl-2">
+              {getHatDescription(hat)
+                .split(" ")
+                .slice(2, -1)
+                .join(" ")
+                .endsWith(",")
+                ? getHatDescription(hat)
+                    .split(" ")
+                    .slice(2, -1)
+                    .join(" ")
+                    .slice(0, -1)
+                : getHatDescription(hat).split(" ").slice(2, -1).join(" ")}
+            </span>
+          </div>
         </div>
       </div>
     );
@@ -52,9 +112,14 @@ export default function Home() {
     (quackSound as HTMLAudioElement).play();
   };
   return (
-    <main className="flex flex-col min-h-screen bg-indigo-300 items-start pt-12">
+    <main className="flex flex-col min-h-screen bg-indigo-300 items-start pt-12 px-4 md:px-0">
       <div className="flex flex-col container items-center bg-gray-800 mx-auto rounded-2xl py-14 space-y-3">
-        <div className="w-full md:w-1/2">
+        <div className="flex flex-col w-full md:w-1/2">
+          <h1 className="text-3xl text-center text-white font-bold">
+            Quack Advice
+          </h1>
+        </div>
+        <div className="w-full md:w-1/2 px-4 md:px-0">
           <div className="flex w-full justify-center text-indigo-200">
             <span className="pb-6">
               Super-charge ideas by critically thinking about them in 6
@@ -79,14 +144,14 @@ export default function Home() {
               Let’s break it down!
             </button>
           </div>
-          {!loading && (
+          {loading && (
             <div className="flex justify-end">
               <Loader />
             </div>
           )}
         </div>
         <div className="flex justify-center w-full">
-          <div className="grid grid-cols-2 gap-4 pt-8">
+          <div className="grid lg:grid-cols-2 md:grid-cols-1  sm:grid-cols-1 gap-4 pt-8 px-6 md:px-24">
             {!!response.length &&
               response.map((v) => (
                 <Card hat={v.hat} key={v.hat} message={v.result} />
