@@ -6,7 +6,6 @@ import { BasePromptTemplate } from "langchain/prompts";
 dotenv.config();
 const chat = new ChatOpenAI({
   openAIApiKey: process.env.OPENAI_API_KEY,
-  modelName: "gpt-4",
 });
 export default async function get_chain(
   prompt: BasePromptTemplate
