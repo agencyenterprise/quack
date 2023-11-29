@@ -1,7 +1,9 @@
 "use client";
 import { useState } from "react";
-import Switch from "./components/Switch";
-import Loader from "./components/loading";
+
+import Loader from "../components/loading";
+import Logo from "../components/Logo";
+import Switch from "../components/Switch";
 
 export default function Home() {
   const [quackSound] = useState(
@@ -65,7 +67,7 @@ export default function Home() {
       )
     );
     setResponse(response);
-    console.log(response);
+
     setLoading(false);
   };
   const Card = ({ message, hat }: any) => {
@@ -113,10 +115,11 @@ export default function Home() {
   };
   return (
     <main className="flex flex-col min-h-screen bg-indigo-300 items-start pt-12 px-4 md:px-0">
+      <div className="flex flex-shrink-0 items-center"></div>
       <div className="flex flex-col container items-center bg-gray-800 mx-auto rounded-2xl py-14 space-y-3">
         <div className="flex flex-col w-full md:w-1/2">
           <h1 className="text-3xl text-center text-white font-bold">
-            Quack Advice
+            <Logo />
           </h1>
         </div>
         <div className="w-full md:w-1/2 px-4 md:px-0">
@@ -145,7 +148,10 @@ export default function Home() {
               Let’s break it down!
             </button>
             <div className="pt-4 text-indigo-200 text-sm">
-              <span>GPT can take quacking forever to load sometimes. Blame them, not us. QUACK!</span>
+              <span>
+                GPT can take quacking forever to load sometimes. Blame them, not
+                us. QUACK!
+              </span>
             </div>
           </div>
           {loading && (
