@@ -118,7 +118,7 @@ export default function Home() {
       <div className="flex flex-shrink-0 items-center"></div>
       <div className="flex flex-col container items-center bg-gray-800 mx-auto rounded-2xl py-14 space-y-3">
         <div className="flex flex-col w-full md:w-1/2">
-          <h1 className="text-3xl text-center text-white font-bold">
+          <h1 className="text-3xl text-center text-white font-bold px-4">
             <Logo />
           </h1>
         </div>
